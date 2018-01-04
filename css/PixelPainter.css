@@ -1,11 +1,25 @@
-#pixelPainter{
+h1 {
+  font: 100px;
+}
+#pixelPainter {
 
 }
-.col{
-    
+#col-3 {
+  width: 30%;
+  float: left;
 }
-.cell{
+#col-7 {
+  width: 70%;
+  float: left;
+}
+#col-3:after, #col-7:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.cell {
   width:50px;
   height: 50px;
   border: 1px solid black;
+  display: inline-block;
 }
