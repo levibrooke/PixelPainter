@@ -1,6 +1,4 @@
 //Structure
-
-
 let createDivOne = document.createElement("div");
 createDivOne.setAttribute("id", "col-3");
 document.getElementById("pixelPainter").appendChild(createDivOne);
@@ -81,3 +79,5 @@ function colorChanger() {
   this.style.backgroundColor = storedColor;
   console.log("colorChanger");
 }
+
+// Button: clear entire canvas
