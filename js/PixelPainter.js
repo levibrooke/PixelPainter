@@ -34,25 +34,25 @@ function createGrid(row, column, parent) {
     }
 }
 
-// Create Color Picker Grid
+// Create Color Picker Grid 2x2
 createGrid(2,2,".col");
 
-// Color Picker 
+// Add colors
+let colors = ['#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
 
-// Add event listener 
-var colorPickerCells = document.querySelectorAll(".col .cell");
+// Add event listener to each cell in the color picker
+let colorPickerCells = document.querySelectorAll(".col .cell");
 
 function colorPickerListener(arr) {
   for (i = 0; i < arr.length; i++) {
     arr[i].addEventListener("click", thisFunction);
+    arr[i].style.backgroundColor = colors[i];
   }
 }
 colorPickerListener(colorPickerCells);
 
-// for (i = 0; i < colorPickerCells.length; i++) {
-//   colorPickerCells[i].addEventListener("click", thisFunction);
-// }
-
 function thisFunction() {
-  console.log("Successful event listener!")
+  // Take clicked color and assign to variable
+  let storedColor = this.style.backgroundColor;
+  console.log(storedColor); 
 }
