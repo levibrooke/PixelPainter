@@ -3,9 +3,18 @@ let createDivOne = document.createElement("div");
 createDivOne.setAttribute("id", "col-3");
 document.getElementById("pixelPainter").appendChild(createDivOne);
 
+let createSwatch = document.createElement("div");
+createSwatch.setAttribute("id", "swatch");
+document.getElementById("col-3").appendChild(createSwatch);
+
 let createDivTwo = document.createElement("div");
 createDivTwo.setAttribute("id", "col-7");
 document.getElementById("pixelPainter").appendChild(createDivTwo);
+
+let createCanvas = document.createElement("div");
+createCanvas.setAttribute("id", "canvas");
+document.getElementById("col-7").appendChild(createCanvas);
+
 
 // Create a grid
 let rowCount = 0;
@@ -33,52 +42,50 @@ function createGrid(row, column, parent) {
 }
 
 // Create Color Picker Grid 2x2
-createGrid(2,2,"#col-3");
+createGrid(2,2,"#swatch");
 
 // Add colors
 let colors = ['#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
 
-// Add event listener to each cell in the color picker
-let colorPickerCells = document.querySelectorAll("#col-3 .cell");
+// Assign colors to the color picker
+let colorPickerCells = document.querySelectorAll("#swatch .cell");
 
-function colorPickerListener(arr) {
-  for (i = 0; i < arr.length; i++) {
-    arr[i].addEventListener("click", colorPicker);
+function addColors(arr){
+
+  for(var i =0; i< arr.length; i++){
     arr[i].style.backgroundColor = colors[i];
   }
 }
-colorPickerListener(colorPickerCells);
+addColors(colorPickerCells);
+
+// Assign event listener to the colorPicker
+swatch.addEventListener('click', colorPicker);
+
 
 let storedColor;
 
-function colorPicker() {
+function colorPicker(event) {
   // Take clicked color and assign to variable
-  storedColor = this.style.backgroundColor;
-  console.log(storedColor); 
-}
 
-
-//Create grid
-createGrid(6,6,"#col-7");
-
-// function pixelPainter(width, height, parent) {
-
-// }
-
-// Add event listener to grid cells
-let canvasCells = document.querySelectorAll("#col-7 .cell");
-
-function canvasListener(arr) {
-  for (i = 0; i < arr.length; i++) {
-    arr[i].addEventListener("click", colorChanger);
+  if(event.target.classList.contains("cell")){
+    storedColor = event.target.style.backgroundColor;
+    console.log(storedColor); 
   }
 }
 
-canvasListener(canvasCells);
+//Create grid
+createGrid(6,6,"#canvas");
 
-function colorChanger() {
-  this.style.backgroundColor = storedColor;
-  console.log("colorChanger");
+// Add event listener to grid cells
+canvas.addEventListener('click', colorChanger);
+
+
+function colorChanger(event) {
+  
+  if( event.target.classList.contains("cell") ){
+    event.target.style.backgroundColor = storedColor;
+    console.log("colorChanger");
+  }
 }
 
 // Button: clear entire canvas
