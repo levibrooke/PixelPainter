@@ -115,7 +115,3 @@ clear.addEventListener('click', function(){
   }
   console.log("cleared!");
 });
-
-
-
-
