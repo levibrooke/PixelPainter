@@ -6,13 +6,13 @@ h1 {
   font-family: monospace;
   margin: 0 25px;
 }
-#col-3 {
-  width: 30%;
+#sidebar {
+  width: 25%;
   float: left;
   text-align: center;
 }
-#col-7 {
-  width: 70%;
+#main {
+  width: 75%;
   float: left;
 }
 #col-3:after, #col-7:after {
@@ -43,16 +43,20 @@ button:hover {
 #clear {
   border: 3px solid #dc143c;
 }
+#addColors {
+  border: 3px solid #14dc3c;
+  margin-top: 20px;
+}
 
 /* Media Queries */
 @media screen and (max-width: 600px) {
   h1 {
     text-align: center;
   }
-  #col-3, #col-7 {
+  #sidebar, #main {
     width: 100%;
   }
-  #col-7 {
+  #main {
     text-align: center;
   }
 }

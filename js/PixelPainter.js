@@ -7,25 +7,25 @@ let colors = ['#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
 
 //Structure
 let createDivOne = document.createElement("div");
-createDivOne.setAttribute("id", "col-3");
+createDivOne.setAttribute("id", "sidebar");
 document.getElementById("pixelPainter").appendChild(createDivOne);
 
 let createSwatch = document.createElement("div");
 createSwatch.setAttribute("id", "swatch");
-document.getElementById("col-3").appendChild(createSwatch);
+document.getElementById("sidebar").appendChild(createSwatch);
 
 let createDivTwo = document.createElement("div");
-createDivTwo.setAttribute("id", "col-7");
+createDivTwo.setAttribute("id", "main");
 document.getElementById("pixelPainter").appendChild(createDivTwo);
 
 let createCanvas = document.createElement("div");
 createCanvas.setAttribute("id", "canvas");
-document.getElementById("col-7").appendChild(createCanvas);
+document.getElementById("main").appendChild(createCanvas);
 
 //Creating Button Structure
 let buttonContainer = document.createElement("div");
 buttonContainer.className = "buttonContainer";
-document.getElementById("col-3").appendChild(buttonContainer);
+document.getElementById("sidebar").appendChild(buttonContainer);
 
 let eraser = document.createElement("button");
 eraser.id = "eraser";
@@ -88,8 +88,16 @@ function colorPicker(event) {
 createGrid(6,6,"#canvas");
 
 // Add event listeners to grid cells
+
+canvas.addEventListener('mousedown', function() {
+  canvas.addEventListener('mouseover', colorChanger);
+});
+
+canvas.addEventListener('mouseup', function() {
+  canvas.removeEventListener('mouseover', colorChanger);
+});
+
 canvas.addEventListener('click', colorChanger);
-canvas.addEventListener('mouseover', colorChanger);
 
 function colorChanger(event) {
   
@@ -114,3 +122,44 @@ clear.addEventListener('click', function(){
   }
   console.log("cleared!");
 });
+
+// Generate new colors (https://www.sitepoint.com/generating-random-color-values/)
+// const generateColor = "rgb" + "(" + (Math.floor(Math.random() * 256)) + "," + (Math.floor(Math.random() * 256)) + "," + (Math.floor(Math.random() * 256)) + ")";
+
+let newColorArray = [];
+
+function generateNewColors(num) {
+  for (let i = 0; i < num; i++) {
+    let generateColor = "rgb" + "(" + (Math.floor(Math.random() * 256)) + "," + (Math.floor(Math.random() * 256)) + "," + (Math.floor(Math.random() * 256)) + ")";
+    newColorArray.push(generateColor);
+  }
+}
+
+function addNewColors(arr){
+  for(var i =0; i< arr.length; i++){
+    arr[i].style.backgroundColor = newColorArray[i];
+  }
+}
+
+// Create button
+let addColorButton = document.createElement("button");
+addColorButton.id = "addColors";
+buttonContainer.appendChild(addColorButton);
+addColorButton.innerHTML = "Add Two Colors";
+
+// Event listener
+addColorButton.addEventListener("click", twoNewColors);
+
+function twoNewColors() {
+  createGrid(1, 2, "#swatch");
+  let newColorPickerCells = document.querySelectorAll("#row" + rowCount + " .cell");
+  console.log(newColorPickerCells);
+  generateNewColors(2);
+  addNewColors(newColorPickerCells);
+
+  addColorButton.removeEventListener("click", twoNewColors);
+  addColorButton.style.textDecoration = "line-through";
+}
+
+
+
