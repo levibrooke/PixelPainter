@@ -23,6 +23,3 @@ h1 {
   border: 1px solid black;
   display: inline-block;
 }
-.cleared .row .cell {
-  background-color: #FFF;
-}

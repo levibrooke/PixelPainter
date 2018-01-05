@@ -65,7 +65,6 @@ let colors = ['#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
 let colorPickerCells = document.querySelectorAll("#swatch .cell");
 
 function addColors(arr){
-
   for(var i =0; i< arr.length; i++){
     arr[i].style.backgroundColor = colors[i];
   }
@@ -75,12 +74,11 @@ addColors(colorPickerCells);
 // Assign event listener to the colorPicker
 swatch.addEventListener('click', colorPicker);
 
-
 let storedColor;
 
 function colorPicker(event) {
+  
   // Take clicked color and assign to variable
-
   if(event.target.classList.contains("cell")){
     storedColor = event.target.style.backgroundColor;
     console.log(storedColor); 
@@ -90,9 +88,9 @@ function colorPicker(event) {
 //Create grid
 createGrid(6,6,"#canvas");
 
-// Add event listener to grid cells
+// Add event listeners to grid cells
 canvas.addEventListener('click', colorChanger);
-
+canvas.addEventListener('mouseover', colorChanger);
 
 function colorChanger(event) {
   
@@ -102,23 +100,22 @@ function colorChanger(event) {
   }
 }
 
-// Button: add event listener to erase button
-
+// Erase button: add event listener
 eraser.addEventListener('click', function() {
   storedColor = "#FFF";
 });
 
+// Clear button: add event listener
 let canvasCells = document.querySelectorAll("#canvas .cell");
 
 clear.addEventListener('click', function(){
-
+  
   for(var i = 0; i < canvasCells.length; i++){
     canvasCells[i].style.backgroundColor = "#FFF"; 
   }
-  
   console.log("cleared!");
-
 });
+
 
 
 
