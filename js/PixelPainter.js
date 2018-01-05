@@ -15,6 +15,20 @@ let createCanvas = document.createElement("div");
 createCanvas.setAttribute("id", "canvas");
 document.getElementById("col-7").appendChild(createCanvas);
 
+//Creating Button Structure
+let buttonContainer = document.createElement("div");
+buttonContainer.className = "buttonContainer";
+document.getElementById("col-3").appendChild(buttonContainer);
+
+let eraser = document.createElement("button");
+eraser.id = "eraser";
+buttonContainer.appendChild(eraser);
+eraser.innerText= "Erase";
+
+let clear = document.createElement("button");
+clear.id = "clear";
+buttonContainer.appendChild(clear);
+clear.innerText = "Clear";
 
 // Create a grid
 let rowCount = 0;
@@ -88,4 +102,23 @@ function colorChanger(event) {
   }
 }
 
-// Button: clear entire canvas
+// Button: add event listener to erase button
+
+eraser.addEventListener('click', function() {
+  storedColor = "#FFF";
+});
+
+let canvasCells = document.querySelectorAll("#canvas .cell");
+
+clear.addEventListener('click', function(){
+
+  for(var i = 0; i < canvasCells.length; i++){
+    canvasCells[i].style.backgroundColor = "#FFF"; 
+  }
+  
+  console.log("cleared!");
+
+});
+
+
+
