@@ -1,3 +1,10 @@
+let storedColor;
+let rowCount = 0;
+let cellCount = 0;
+
+// Add colors
+let colors = ['#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
+
 //Structure
 let createDivOne = document.createElement("div");
 createDivOne.setAttribute("id", "col-3");
@@ -31,9 +38,6 @@ buttonContainer.appendChild(clear);
 clear.innerText = "Clear";
 
 // Create a grid
-let rowCount = 0;
-let cellCount = 0;
-
 function createGrid(row, column, parent) {
 
   for (let i = 0; i < row; i++) {
@@ -58,12 +62,9 @@ function createGrid(row, column, parent) {
 // Create Color Picker Grid 2x2
 createGrid(2,2,"#swatch");
 
-// Add colors
-let colors = ['#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
-
-// Assign colors to the color picker
 let colorPickerCells = document.querySelectorAll("#swatch .cell");
 
+// Assign colors to the color picker
 function addColors(arr){
   for(var i =0; i< arr.length; i++){
     arr[i].style.backgroundColor = colors[i];
@@ -73,8 +74,6 @@ addColors(colorPickerCells);
 
 // Assign event listener to the colorPicker
 swatch.addEventListener('click', colorPicker);
-
-let storedColor;
 
 function colorPicker(event) {
   

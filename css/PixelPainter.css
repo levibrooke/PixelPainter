@@ -1,7 +1,10 @@
+#pixelPainter {
+  margin: 100px 0;
+}
 h1 {
   font-size: 50px;
   font-family: monospace;
-  margin: 10px 55px;
+  margin: 0 25px;
 }
 #col-3 {
   width: 30%;
@@ -28,13 +31,28 @@ button {
   padding: 5px 10px;
   margin:0 10px;
 }
+button:hover {
+  cursor: pointer;
+}
 .buttonContainer{
   margin:20px;
 }
 #eraser {
   border: 3px solid blue;
-  
 } 
 #clear {
   border: 3px solid #dc143c;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+  h1 {
+    text-align: center;
+  }
+  #col-3, #col-7 {
+    width: 100%;
+  }
+  #col-7 {
+    text-align: center;
+  }
 }
